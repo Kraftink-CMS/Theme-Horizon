@@ -1,0 +1,53 @@
+{
+    "id": "horizon",
+    "name": "Horizon",
+    "authors": ["nivcoo","KraftInk"],
+    "license": "MIT",
+    "market": {
+        "author": {
+            "name": "nivcoo, KraftInk",
+            "url": "https://github.com/kraftink-cms"
+        },
+        "description": "horizon::market.description",
+        "image": {
+            "en": "preview-en.jpg",
+            "fr": "preview-fr.jpg"
+        }
+    },
+    "type": "theme",
+    "target": "site",
+    "theme_color": "#f1e9ff",
+    "version": "1.0.0",
+    "description": "horizon::messages.description",
+    "requires": {
+        "cms": ">=0.0.1",
+        "php": "^8.3"
+    },
+    "integrations": {
+        "plugin:shop": ">=0.0.1",
+        "plugin:vote": ">=0.0.1",
+        "plugin:wiki": ">=0.0.1",
+        "plugin:staff": ">=0.0.1",
+        "plugin:faq": ">=0.0.1",
+        "plugin:support": ">=0.0.1",
+        "plugin:forum": ">=0.0.1"
+    },
+    "assets": {
+        "styles": ["theme.css"],
+        "scripts": [],
+        "fonts": [
+            "fonts/open-sans-latin-400-normal.woff2",
+            "fonts/open-sans-latin-600-normal.woff2",
+            "fonts/open-sans-latin-700-normal.woff2",
+            "fonts/fredoka-latin-wght-normal.woff2",
+            "fonts/fredoka-latin-ext-wght-normal.woff2"
+        ],
+        "images": ["images/highlands.webp", "images/highlands-mobile.webp", "images/expedition-kit.webp"]
+    },
+    "build": {
+        "scss": ["resources/scss/theme.scss"]
+    },
+    "capabilities": {
+        "appearance": ["light"]
+    }
+}

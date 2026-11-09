@@ -1,0 +1,867 @@
+@use "fonts";
+@use "inner-pages";
+@use "community";
+
+.theme-horizon {
+    --page: #faf5ff;
+    --surface: #fff;
+    --ink: #302041;
+    --muted: #5e506b;
+    --line: #e1d4ee;
+    --accent: #8e326e;
+    --accent-strong: #6a2356;
+    --accent-ink: #fff;
+    --soft: #f1e9ff;
+    --sky: #e4cafa;
+    --night: #392249;
+    --night-ink: #fff7ff;
+    --night-muted: #eadcf2;
+    --coral: #ff9b7b;
+    --coral-bright: #ffb298;
+    --focus-ring: #8e326e;
+    --display-font: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+    --content-width: 76rem;
+    --gutter: clamp(1rem, 3vw, 2.5rem);
+    --bs-primary: var(--accent);
+    --bs-primary-rgb: 142, 50, 110;
+    --bs-primary-bg-subtle: var(--soft);
+    --bs-primary-border-subtle: #d9c3ee;
+    --bs-primary-text-emphasis: var(--accent-strong);
+    --bs-body-bg: var(--page);
+    --bs-body-bg-rgb: 250, 245, 255;
+    --bs-body-color: var(--ink);
+    --bs-body-color-rgb: 48, 32, 65;
+    --bs-secondary-color: var(--muted);
+    --bs-secondary-color-rgb: 94, 80, 107;
+    --bs-emphasis-color: var(--ink);
+    --bs-emphasis-color-rgb: 48, 32, 65;
+    --bs-secondary-bg: var(--soft);
+    --bs-tertiary-bg: var(--soft);
+    --bs-border-color: var(--line);
+    --bs-border-radius: 0.875rem;
+    --bs-border-radius-sm: 0.7rem;
+    --bs-border-radius-lg: 1.5rem;
+    --bs-link-color: var(--accent);
+    --bs-link-color-rgb: 142, 50, 110;
+    --bs-link-hover-color: var(--accent-strong);
+    --bs-link-hover-color-rgb: 106, 35, 86;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--page);
+    color: var(--ink);
+    font-family: "Open Sans", system-ui, sans-serif;
+    line-height: 1.65;
+
+    :where(h1, h2, h3, h4, h5, h6) {
+        font-weight: 700;
+        line-height: 1.18;
+        letter-spacing: -0.035em;
+    }
+
+    h1 {
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        overflow-wrap: anywhere;
+    }
+
+    h1,
+    .horizon-section-heading h2,
+    .horizon-community-intro h2 {
+        font-family: var(--display-font);
+        font-weight: 650;
+        letter-spacing: -0.025em;
+    }
+
+    :where(a, button, summary):focus-visible {
+        outline: 2px solid var(--focus-ring);
+        outline-offset: 3px;
+    }
+
+    .visually-hidden-focusable {
+        z-index: 5;
+    }
+
+    .container {
+        width: min(100%, calc(var(--content-width) + var(--gutter) * 2));
+        max-width: none;
+        padding-inline: var(--gutter);
+    }
+
+    .site-content {
+        flex: 1 0 auto;
+        padding-block: 2rem 4.5rem;
+    }
+
+    .site-footer {
+        --focus-ring: var(--coral-bright);
+        background-color: var(--night);
+        color: var(--night-ink);
+    }
+
+    .site-header {
+        position: relative;
+        z-index: 3;
+        background: var(--soft);
+
+        .navbar {
+            --bs-navbar-color: var(--muted);
+            --bs-navbar-hover-color: var(--accent-strong);
+            --bs-navbar-active-color: var(--accent-strong);
+            padding-block: 0.65rem 0.8rem;
+        }
+
+        .header-inner {
+            width: min(calc(100% - var(--gutter) * 2), var(--content-width));
+            gap: 0.5rem clamp(0.75rem, 2vw, 1.75rem);
+            padding: 0.45rem 0.8rem;
+            border: 1px solid var(--line);
+            border-radius: 1.25rem;
+            background: var(--surface);
+            box-shadow: 0 3px 0 #dac5f1;
+        }
+
+        .navbar-collapse {
+            gap: 1rem;
+        }
+
+        .navbar-nav {
+            gap: 0.25rem;
+        }
+
+        .nav-link {
+            border-radius: var(--bs-border-radius-sm);
+            font-size: 0.875rem;
+            font-weight: 700;
+
+            &.active {
+                background: var(--soft);
+            }
+        }
+    }
+
+    &.horizon-landing .site-header {
+        position: absolute;
+        inset: 0 0 auto;
+        background: transparent;
+
+        .header-inner {
+            background: rgb(255 255 255 / 91%);
+        }
+    }
+
+    .horizon-wordmark {
+        display: inline-flex;
+        flex: 0 0 auto;
+        align-items: center;
+        max-width: min(68%, 17rem);
+        min-width: 0;
+        color: var(--ink);
+        font-family: var(--display-font);
+        font-size: clamp(1.125rem, 2vw, 1.45rem);
+        font-weight: 700;
+        letter-spacing: -0.045em;
+        line-height: 1.2;
+        text-decoration: none;
+        overflow-wrap: anywhere;
+
+        &:hover {
+            color: var(--accent-strong);
+        }
+    }
+
+    .btn {
+        font-weight: 700;
+    }
+
+    .btn-primary {
+        --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
+        --bs-btn-bg: var(--accent);
+        --bs-btn-color: var(--accent-ink);
+        --bs-btn-border-color: var(--accent);
+        --bs-btn-hover-bg: var(--accent-strong);
+        --bs-btn-hover-color: var(--accent-ink);
+        --bs-btn-hover-border-color: var(--accent-strong);
+        --bs-btn-active-bg: var(--accent-strong);
+        --bs-btn-active-color: var(--accent-ink);
+        --bs-btn-active-border-color: var(--accent-strong);
+        --bs-btn-disabled-bg: var(--accent);
+        --bs-btn-disabled-color: var(--accent-ink);
+        --bs-btn-disabled-border-color: var(--accent);
+    }
+
+    .btn-outline-primary {
+        --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
+        --bs-btn-color: var(--accent);
+        --bs-btn-border-color: var(--accent);
+        --bs-btn-hover-bg: var(--accent);
+        --bs-btn-hover-color: var(--accent-ink);
+        --bs-btn-hover-border-color: var(--accent);
+        --bs-btn-active-bg: var(--accent-strong);
+        --bs-btn-active-color: var(--accent-ink);
+        --bs-btn-active-border-color: var(--accent-strong);
+        --bs-btn-disabled-color: var(--accent);
+        --bs-btn-disabled-border-color: var(--accent);
+    }
+
+    .btn-outline-secondary {
+        --bs-btn-bg: var(--surface);
+        --bs-btn-color: var(--accent-strong);
+        --bs-btn-border-color: #9d88ad;
+        --bs-btn-hover-bg: var(--soft);
+        --bs-btn-hover-color: var(--accent-strong);
+        --bs-btn-hover-border-color: var(--accent);
+        --bs-btn-active-bg: var(--soft);
+        --bs-btn-active-color: var(--accent-strong);
+        --bs-btn-active-border-color: var(--accent);
+    }
+
+    .card {
+        --bs-card-bg: var(--surface);
+        --bs-card-color: var(--ink);
+        --bs-card-border-color: var(--line);
+        --bs-card-cap-bg: var(--soft);
+    }
+
+    .modal {
+        --bs-modal-bg: var(--surface);
+        --bs-modal-color: var(--ink);
+    }
+
+    .list-group {
+        --bs-list-group-bg: var(--surface);
+        --bs-list-group-action-hover-bg: var(--soft);
+        --bs-list-group-active-bg: var(--accent);
+        --bs-list-group-active-border-color: var(--accent);
+    }
+
+    .progress {
+        --bs-progress-bar-bg: var(--accent);
+        --bs-progress-bar-color: var(--accent-ink);
+    }
+
+    progress {
+        accent-color: var(--accent);
+    }
+
+    .form-control,
+    .form-select {
+        background-color: var(--surface);
+        border-color: #9d88ad;
+
+        &:disabled {
+            background-color: var(--soft);
+        }
+
+        &:focus {
+            background-color: var(--surface);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.18);
+        }
+    }
+
+    .form-check-input {
+        border-color: #9d88ad;
+
+        &:checked {
+            background-color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        &:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.18);
+        }
+    }
+
+    .dropdown-menu {
+        --bs-dropdown-bg: var(--surface);
+        --bs-dropdown-link-hover-bg: var(--soft);
+        --bs-dropdown-link-active-bg: var(--accent);
+        --bs-dropdown-link-active-color: var(--accent-ink);
+    }
+
+    .table {
+        --bs-table-bg: var(--surface);
+    }
+
+    .prose :is(th, td) {
+        overflow-wrap: break-word;
+    }
+
+    .nav-pills {
+        --bs-nav-pills-link-active-bg: var(--accent);
+    }
+
+    .pagination {
+        --bs-pagination-bg: var(--surface);
+        --bs-pagination-hover-bg: var(--soft);
+        --bs-pagination-active-bg: var(--accent);
+        --bs-pagination-active-border-color: var(--accent);
+    }
+
+    .page-heading {
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 1.25rem;
+    }
+
+    .auth-page {
+        padding: clamp(1.25rem, 4vw, 2.25rem);
+        border: 1px solid var(--line);
+        border-radius: var(--bs-border-radius-lg);
+        background: var(--surface);
+    }
+
+    .horizon-error {
+        max-width: 42rem;
+        margin: clamp(1.5rem, 5vw, 4rem) auto;
+        border-radius: var(--bs-border-radius-lg);
+    }
+
+    .horizon-error-code {
+        margin-bottom: 0.35rem;
+        color: var(--accent);
+        font-family: var(--display-font);
+        font-size: clamp(2rem, 6vw, 4rem);
+        font-weight: 650;
+        line-height: 1;
+    }
+
+    .horizon-home {
+        display: grid;
+        grid-template-columns:
+            [full-start] minmax(var(--gutter), 1fr)
+            [content-start] minmax(0, var(--content-width))
+            [content-end] minmax(var(--gutter), 1fr) [full-end];
+        align-content: start;
+        width: 100%;
+        padding-top: 0;
+        padding-inline: 0;
+
+        > * {
+            grid-column: content;
+            min-width: 0;
+        }
+
+        > .horizon-hero,
+        > .horizon-community {
+            grid-column: full;
+        }
+
+        > .alert:first-child {
+            margin-top: 1rem;
+        }
+    }
+
+    .horizon-hero {
+        position: relative;
+        isolation: isolate;
+        display: grid;
+        align-items: center;
+        min-height: clamp(37rem, 50vw, 48rem);
+        background: var(--sky);
+
+        &::after {
+            position: absolute;
+            inset: auto 0 -1px;
+            height: clamp(0.8rem, 2.5vw, 2.25rem);
+            background: var(--night);
+            clip-path: ellipse(65% 100% at 50% 100%);
+            pointer-events: none;
+            content: "";
+        }
+    }
+
+    .horizon-hero-art {
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        display: block;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .horizon-hero-inner {
+        width: min(calc(100% - var(--gutter) * 2), var(--content-width));
+        margin-inline: auto;
+        padding-block: 5.25rem 7.5rem;
+    }
+
+    .horizon-hero-logo {
+        display: block;
+        width: min(100%, 29rem);
+        height: clamp(7.5rem, 13vw, 11rem);
+        margin-inline: auto;
+        object-fit: contain;
+    }
+
+    .horizon-hero-copy {
+        max-width: 42rem;
+        margin-inline: auto;
+        text-align: center;
+
+        h1 {
+            max-width: 14ch;
+            margin: 0 auto 0.8rem;
+            color: var(--night);
+            font-size: clamp(3.75rem, 8vw, 7rem);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.035em;
+            -webkit-text-stroke: 0.085em #fff7ff;
+            paint-order: stroke fill;
+            text-wrap: balance;
+        }
+
+        .btn {
+            min-height: 3rem;
+            padding: 0.75rem 1.125rem;
+            font-size: 0.875rem;
+        }
+
+        .btn-primary {
+            --bs-btn-bg: var(--coral);
+            --bs-btn-color: #3b2047;
+            --bs-btn-border-color: #ac5270;
+            --bs-btn-hover-bg: var(--coral-bright);
+            --bs-btn-hover-color: #3b2047;
+            --bs-btn-hover-border-color: #ac5270;
+            --bs-btn-active-bg: var(--coral-bright);
+            --bs-btn-active-color: #3b2047;
+            --bs-btn-active-border-color: #ac5270;
+            box-shadow: 0 3px 0 #ac5270;
+        }
+    }
+
+    .horizon-hero-action {
+        width: fit-content;
+        max-width: 100%;
+        margin: 1.55rem auto 0;
+    }
+
+    .horizon-hero-action .horizon-server-copy {
+        display: grid;
+        place-content: center;
+        gap: 0.2rem;
+        width: 100%;
+        min-width: min(16rem, calc(100vw - 2 * var(--gutter)));
+        min-height: 4.625rem;
+        border: 2px solid #ac5270;
+        border-radius: 1.15rem;
+        box-shadow: 0 5px 0 #ac5270;
+        font-size: 1rem;
+        overflow-wrap: anywhere;
+    }
+
+    .horizon-server-address {
+        font-family: var(--display-font);
+        font-size: clamp(1.35rem, 3vw, 1.8rem);
+        font-weight: 650;
+        line-height: 1;
+    }
+
+    .horizon-copy-caption {
+        font-size: 0.75rem;
+    }
+
+    .horizon-kicker {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        margin: 0;
+        color: var(--accent);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+
+        &::before {
+            width: 0.48rem;
+            height: 0.48rem;
+            flex: 0 0 auto;
+            background-color: currentColor;
+            transform: rotate(45deg);
+            content: "";
+        }
+    }
+
+    .horizon-hero-description {
+        max-width: 39ch;
+        margin: 0 auto;
+        color: var(--night);
+        font-size: clamp(0.95rem, 1.35vw, 1.15rem);
+        font-weight: 600;
+        overflow-wrap: anywhere;
+    }
+
+    .horizon-community {
+        --focus-ring: var(--coral-bright);
+        margin-block: -1px clamp(2.5rem, 5vw, 4.5rem);
+        padding-block: clamp(2.25rem, 6vw, 4.75rem);
+        background: var(--night);
+        color: var(--night-ink);
+    }
+
+    .horizon-community-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 13rem) minmax(0, 30rem);
+        justify-content: center;
+        align-items: center;
+        gap: clamp(1.5rem, 6vw, 5rem);
+        width: min(calc(100% - var(--gutter) * 2), var(--content-width));
+        margin-inline: auto;
+    }
+
+    .horizon-community-intro {
+        .horizon-kicker {
+            color: var(--coral-bright);
+        }
+
+        h2 {
+            margin-block: 0.45rem;
+            font-size: clamp(1.8rem, 3.7vw, 3.25rem);
+        }
+
+        > p:not(.horizon-kicker) {
+            margin: 0;
+            color: var(--night-muted);
+        }
+
+        > .horizon-population {
+            margin-top: 0.8rem;
+            font-size: 0.875rem;
+        }
+    }
+
+    .horizon-community-art {
+        width: 100%;
+        height: auto;
+        filter: drop-shadow(0 7px 0 rgb(24 11 33 / 32%));
+    }
+
+    .horizon-community-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+        margin-top: 1.25rem;
+
+        .btn {
+            --bs-btn-bg: var(--soft);
+            --bs-btn-color: var(--night);
+            --bs-btn-border-color: var(--soft);
+            --bs-btn-hover-bg: var(--coral-bright);
+            --bs-btn-hover-color: var(--night);
+            --bs-btn-hover-border-color: var(--coral-bright);
+        }
+    }
+
+    .horizon-section-heading {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: end;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+
+        h2 {
+            margin: 0.35rem 0 0;
+            font-size: clamp(1.75rem, 4vw, 3rem);
+        }
+    }
+
+    .horizon-news-feed {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+        gap: clamp(0.875rem, 2vw, 1.5rem);
+
+        .news-card {
+            border-top: 4px solid #dc92bd;
+            border-radius: var(--bs-border-radius-lg);
+        }
+
+        .news-card:has(.news-cover-link) {
+            border-top: 1px solid var(--line);
+        }
+
+        .news-cover {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+
+    .site-footer {
+        --bs-secondary-color: var(--night-muted);
+        --bs-link-color-rgb: 237, 219, 235;
+        --bs-link-hover-color-rgb: 255, 195, 174;
+        border-color: #705480 !important;
+
+        .footer-brand {
+            color: var(--night-ink);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #705480;
+        }
+
+        .link-secondary {
+            color: var(--night-muted) !important;
+
+            &:hover {
+                color: var(--coral-bright) !important;
+            }
+        }
+
+        a > .bi {
+            color: currentColor !important;
+        }
+    }
+
+    @media (min-width: 1400px) {
+        .site-header .navbar-collapse > .navbar-nav:first-child {
+            flex: 1;
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 1399.98px) {
+        &.horizon-landing .site-header:not(:has(.collapse)),
+        &.horizon-landing .site-header:has(.navbar-toggler[aria-expanded="true"]) {
+            position: relative;
+        }
+
+        .site-header {
+            .header-inner {
+                gap: 0 0.625rem;
+                padding-block: 0.5rem;
+                padding-inline: 0.875rem 0.5rem;
+
+                &:has(.navbar-toggler[aria-expanded="true"]) {
+                    background: var(--surface);
+                }
+            }
+
+            .horizon-wordmark {
+                flex: 1 1 0;
+                max-width: none;
+                min-height: 2.75rem;
+            }
+
+            .horizon-compact-actions {
+                display: flex;
+                flex: 0 0 auto;
+                align-items: center;
+                gap: 0.375rem;
+            }
+
+            .horizon-play-link,
+            .navbar-toggler {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 2.75rem;
+                padding: 0.45rem 0.65rem;
+                border-radius: var(--bs-border-radius-sm);
+                font-size: 0.875rem;
+                font-weight: 700;
+            }
+
+            .horizon-play-link {
+                --bs-btn-bg: var(--coral);
+                --bs-btn-color: var(--night);
+                --bs-btn-border-color: #ac5270;
+                --bs-btn-hover-bg: var(--coral-bright);
+                --bs-btn-hover-color: var(--night);
+                --bs-btn-hover-border-color: #ac5270;
+                --bs-btn-active-bg: var(--coral-bright);
+                --bs-btn-active-color: var(--night);
+                --bs-btn-active-border-color: #ac5270;
+            }
+
+            .navbar-toggler {
+                gap: 0.45rem;
+                border-color: var(--line);
+                background: var(--soft);
+                color: var(--accent-strong);
+
+                &[aria-expanded="true"] {
+                    border-color: var(--accent-strong);
+                    background: var(--accent-strong);
+                    color: var(--accent-ink);
+
+                    .horizon-menu-icon::before {
+                        transform: translateY(-50%) rotate(45deg);
+                    }
+
+                    .horizon-menu-icon::after {
+                        transform: translateY(-50%) rotate(-45deg);
+                    }
+                }
+            }
+
+            .horizon-menu-icon {
+                position: relative;
+                flex: 0 0 1rem;
+                height: 1rem;
+
+                &::before,
+                &::after {
+                    position: absolute;
+                    inset: 50% 0 auto;
+                    height: 2px;
+                    border-radius: 1px;
+                    background: currentColor;
+                    content: "";
+                }
+
+                &::before {
+                    transform: translateY(-0.25rem);
+                }
+
+                &::after {
+                    transform: translateY(0.125rem);
+                }
+            }
+
+            .navbar-collapse {
+                padding-block: 0.65rem 0.25rem;
+            }
+
+            .navbar-collapse > .navbar-nav:first-child {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                align-items: stretch;
+                gap: 0.4rem;
+                padding-top: 0.65rem;
+                border-top: 1px solid var(--line);
+
+                > .nav-link,
+                > .navigation-dropdown > .nav-link {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    min-height: 2.75rem;
+                    padding: 0.55rem 0.7rem;
+                    border: 1px solid var(--line);
+                    background: var(--page);
+                    color: var(--ink);
+                    line-height: 1.35;
+                    overflow-wrap: anywhere;
+                }
+
+                > .navigation-dropdown {
+                    min-width: 0;
+                }
+
+                > .nav-link.active {
+                    border-color: #d9c3ee;
+                    background: var(--soft);
+                    color: var(--accent-strong);
+                    box-shadow: inset 0.2rem 0 var(--accent);
+                }
+
+                > .nav-link:hover,
+                > .navigation-dropdown > .nav-link:hover {
+                    background: var(--soft);
+                }
+
+                .dropdown-menu {
+                    width: 100%;
+                    min-width: 0;
+
+                    .dropdown-item {
+                        white-space: normal;
+                        overflow-wrap: anywhere;
+                    }
+                }
+
+                @media (min-width: 576px) {
+                    grid-template-columns: repeat(3, minmax(0, 1fr));
+                }
+            }
+
+            .navbar-collapse > .navbar-nav + .navbar-nav {
+                flex-flow: row wrap;
+                align-items: center !important;
+                gap: 0.4rem;
+                margin-top: 0.65rem;
+                padding-top: 0.65rem;
+                border-top: 1px solid var(--line);
+
+                > .nav-link,
+                > .navigation-dropdown > .nav-link,
+                > .btn {
+                    display: inline-flex;
+                    align-items: center;
+                    min-height: 2.75rem;
+                    padding-inline: 0.7rem;
+                }
+
+                > .btn {
+                    justify-content: center;
+                    flex: 1 1 auto;
+                    min-width: 0;
+                    overflow-wrap: anywhere;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .horizon-hero {
+            min-height: 0;
+            align-items: end;
+        }
+
+        .horizon-hero-art {
+            position: relative;
+            grid-area: 1 / 1;
+            height: clamp(17rem, 82vw, 27rem);
+            align-self: start;
+
+            img {
+                object-position: 60% 40%;
+            }
+
+            &::after {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(180deg, transparent 56%, var(--sky));
+                content: "";
+            }
+        }
+
+        .horizon-hero-inner {
+            grid-area: 1 / 1;
+            padding-block: clamp(11rem, 57vw, 19rem) 3.75rem;
+        }
+
+        .horizon-hero-logo {
+            width: min(100%, 17rem);
+            height: clamp(5.25rem, 28vw, 8rem);
+        }
+
+        .horizon-hero-copy {
+            h1 {
+                max-width: 16ch;
+                font-size: clamp(3.25rem, 13vw, 5.75rem);
+            }
+        }
+
+        .horizon-community-inner {
+            grid-template-columns: minmax(0, 25%) minmax(0, 1fr);
+            gap: clamp(0.75rem, 4vw, 2rem);
+        }
+    }
+}
