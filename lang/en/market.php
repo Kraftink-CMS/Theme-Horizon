@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'description' => 'An adventure theme in pastel colors, with an illustrated panorama and a logbook for server news.',
+    'description' => 'A floating-island homepage with a server address players can copy.',
 ];
