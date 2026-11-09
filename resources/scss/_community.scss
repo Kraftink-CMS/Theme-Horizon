@@ -1,0 +1,27 @@
+.theme-horizon {
+    .table:has(> thead th[data-table-sort="views"]) {
+        td:first-child a {
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 575.98px) {
+            th,
+            td:last-child time {
+                white-space: normal;
+            }
+        }
+    }
+
+    @media (max-width: 419.98px) {
+        .input-group:has(> #support-category) {
+            display: grid;
+            gap: 0.625rem;
+
+            > :is(.form-select, .btn) {
+                width: 100%;
+                margin-inline: 0;
+                border-radius: var(--bs-border-radius);
+            }
+        }
+    }
+}
