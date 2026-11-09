@@ -21,7 +21,7 @@
     "type": "theme",
     "target": "site",
     "theme_color": "#f1e9ff",
-    "version": "1.0.1-dev",
+    "version": "1.0.1",
     "description": "horizon::messages.description",
     "requires": {
         "cms": ">=0.0.1",
