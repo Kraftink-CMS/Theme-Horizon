@@ -70,7 +70,7 @@
                     <nav class="horizon-community-links" aria-label="{{ __('admin.social.title') }}">
                         @foreach ($socialLinks as $link)
                             <a class="btn btn-light" href="{{ $link['url'] }}" target="_blank" rel="noopener noreferrer me">
-                                <i class="bi bi-{{ $link['icon'] }} me-1" aria-hidden="true"></i>
+                                <x-content-icon :name="$link['icon']" class="me-1" />
                                 {{ $link['type'] === 'discord' ? __('theme::messages.home.community.join_discord') : $link['title'] }}
                                 <span class="visually-hidden">{{ __('admin.social.new_tab') }}</span>
                             </a>
